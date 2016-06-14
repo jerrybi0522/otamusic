@@ -1,2 +1,4 @@
-<h1>Songs#show</h1>
-<p>Find me in app/views/songs/show.html.erb</p>
+<%= YoutubeAddy.youtube_embed_url(@song.youtube_url, 420, 315) %>
+<%= @song.name %>
+<%= by @song.title %>
+<%= @song.description %>
