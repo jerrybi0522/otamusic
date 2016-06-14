@@ -15,6 +15,7 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @categories = Category.all
   end
 
   def create
@@ -32,7 +33,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
     @song.upate(song_params)
-    @redirect_to song_path(@song)
+    redirect_to song_path(@song)
   end
 
   def destroy

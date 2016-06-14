@@ -1,2 +1,10 @@
-<h1>Songs#edit</h1>
-<p>Find me in app/views/songs/edit.html.erb</p>
+<%= form_for @song do |f| %>
+	<%= f.text_field :name, :value => @song.name, :maxlength => 150 %><br><br>
+	<%= f.text_field :artist, :value => @song.artist, :maxlength => 150 %><br><br>
+	<%= f.text_field :youtube_url, :value => @song.youtube_url, :maxlength => 150 %><br><br>
+	<%= f.collection_select :category_id, @categories, :id, :mood %>
+	<%= f.text_area :description, :value => @song.description, :cols => 50, :rows => 10 %><br><br>
+	<%= f.submit :update %>
+<% end %>
+
+<%= button_to "Delete", song_path(@song), method: :delete %>
