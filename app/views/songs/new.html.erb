@@ -1,2 +1,6 @@
-<h1>Songs#new</h1>
-<p>Find me in app/views/songs/new.html.erb</p>
+<%= form_for @song do |f| %>
+	<%= f.text_field :name, placeholder: "Song Name", :maxlength => 150 %><br><br>
+	<%= f.text_field :artist, placeholder: "Song Artist", :maxlength => 150 %><br><br>
+	<%= f.text_field :youtube_url, placeholder: "Youtube URL", :maxlength => 150 %><br><br>
+	<%= f.text_area :description, :cols => 50, :rows => 10 %><br><br>
+<% end %>

@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create(username: "jerrybi", password: "password", email: "jerrybi0522@gmail.com", admin: true)
+
+Category.create(mood: "Cute")
+Category.create(mood: "Joyful")
+Category.create(mood: "Melancholic")
+Category.create(mood: "Psyched")
+Category.create(mood: "Serene")
