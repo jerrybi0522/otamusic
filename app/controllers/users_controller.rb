@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @songs = @user.songs
+    @fav_songs = Favorite.where(user_id: @user.id).all
   end
 
   def new
@@ -45,14 +47,6 @@ class UsersController < ApplicationController
     @user.destroy
     log_out
     redirect_to root_path
-  end
-
-  def favorite
-    @user = User.find(params[:id])
-  end
-
-  def upload
-    @user = User.find(params[:id])
   end
 
   private

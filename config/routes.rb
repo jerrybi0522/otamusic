@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   root 'categories#index'
   
-  get '/favorite' => 'users#favorite'
-
-  get '/upload' => 'users#upload'
-
   resources :users
   resources :categories, only: [:index, :show]
   resources :songs

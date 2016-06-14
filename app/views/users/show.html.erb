@@ -1,2 +1,10 @@
 <%= @user.username %>
 <%= @user.email %>
+
+<% @songs.reverse.each do |song| %>
+	<% link_to song.name by song.artist, song_path(song) %>
+<% end %>
+
+<% @fav_songs.reverse.each do |fav| %>
+	<%= link_to fav.song.name by fav.song.artist, song_path(fav) %>
+<% end %>
