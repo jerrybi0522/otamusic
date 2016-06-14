@@ -1,0 +1,13 @@
+
+<%= form_for @user do |f| %>
+	<%=f.text_field :username, :value => @user.username, placeholder: "Username" %><br><br>
+
+	<%=f.password_field :password, :value => @user.password, placeholder: "Password" %><br><br>
+
+	<%=f.password_field :password_confirmation, placeholder: "Re-enter Password" %><br><br>
+
+	<%=f.text_field :email, :value => @user.email, placeholder: "Email" %><br><br>
+
+	<%=f.submit%>
+<% end %>
+<%= button_to "Delete User", user_path(@user), method: :delete %>
