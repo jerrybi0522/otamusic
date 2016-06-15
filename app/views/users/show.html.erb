@@ -1,5 +1,8 @@
 <%= @user.username %>
 <%= @user.email %>
+<% if current_user == @ user || current_user.admin %>
+	<%= link_to "Edit User", edit_user_path(@user) %>
+<% end %>
 
 <% @songs.reverse.each do |song| %>
 	<% link_to song.name by song.artist, song_path(song) %>

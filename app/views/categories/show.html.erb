@@ -1,2 +1,4 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<%= @category.mood %>
+<% @songs.each do |song| %>
+	<%= link_to song.name by @song.artist, song_path(song) %><br>
+<% end %>

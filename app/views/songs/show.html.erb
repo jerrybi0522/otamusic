@@ -2,3 +2,25 @@
 <%= @song.name %>
 <%= by @song.title %>
 <%= @song.description %>
+<% if current_user == @song.user || current_user.admin %>
+	<%= link_to "Edit Song", edit_song_path(@song) %>
+<% end %>
+
+<% if logged_in? %>
+	<%= form_for Comment.new do |f| %>
+		<%= f.text_area :body, :cols => 50, :rows => 10 %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+		<%= f.hidden_field :song_id, value: @song.id %>
+		<%= f.submit %>
+	<% end %>
+<% end %>
+
+<% if @post.comments %>
+	<% @comments.reverse.each do |comment| %>
+		<%= link_to comment.user.username, user_path(comment.user) %><br>
+		<%= comment.body %><br>
+		<% if current_user == @comment.user || current_user.admin %>
+			<%= button_to "Delete", comment_path(comment), method: :delete %>
+		<% end %>
+	<% end %>
+<% end %>
