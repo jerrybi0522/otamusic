@@ -12,7 +12,7 @@
 			<li><%= link_to "Members", users_path %></li>
 		</ul>
 		<% if logged_in? %>
-			<li><%= link_to "Log Out", session_path(current_user.id), method: :delete %></li>
+			<li><%= link_to "Log Out", log_out_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
 		<% else %>
 			<%= form_tag sessions_path do %>
@@ -20,7 +20,7 @@
 				<li><%= password_field_tag :password, nil, :placeholder=> "Password" %></li>
 				<li><%= submit_tag "Log In" %></li>
 			<% end %>
-			<li><%= link_to "Sign Up" new_user_path %></li>
+			<li><%= link_to "Sign Up", new_user_path %></li> 
 		<% end %>
 	</nav>
 <%= yield %>

@@ -1,3 +1,5 @@
-<% @categories.each do |category| %>
-	<%= link_to category.mood, category_path(category) %>
-<% end %>
+<%= link_to image_tag(@cute.mood), song_path(@random_cute) %>
+<%= link_to image_tag(@joyful.mood), song_path(@random_joyful) %>
+<%= link_to image_tag(@melancholic.mood), song_path(@random_melancholic) %>
+<%= link_to image_tag(@psyched.mood), song_path(@random_psyched) %>
+<%= link_to image_tag(@serene.mood), song_path(@random_serene) %>
