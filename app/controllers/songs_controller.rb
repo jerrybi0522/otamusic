@@ -10,6 +10,7 @@ class SongsController < ApplicationController
     @comments = @song.comments
     @favorite = Favorite.new
     @vote = Vote.new
+    @categories = Category.all
   end
 
   def new

@@ -1,6 +1,6 @@
 <%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 420, 315) %>
 <%= @song.name %>
-by <%= @song.name %>
+by <%= @song.artist %>
 <%= @song.description %>
 <% if logged_in? %>
 	<% if current_user == @song.user || current_user.admin %>
@@ -9,6 +9,13 @@ by <%= @song.name %>
 <% end %>
 
 <% if logged_in? %>
+	<% @categories.each do |category| %>
+		<%= form_for Vote.new do |f| %>
+			<%= f.hidden_field :category_id , value: category.id %>
+			<%= f.submit image_tag(category.mood) %>
+		<% end %>
+	<% end %>
+
 	<%= form_for Comment.new do |f| %>
 		<%= f.text_area :body, :cols => 50, :rows => 10 %>
 		<%= f.hidden_field :user_id, value: current_user.id %>

@@ -15,7 +15,7 @@ Song.create([
 		user_id: users[0].id,
 		category_id: categories[0].id,
 		name: "Renai Circulation",
-		artist: "Nana Mizuki",
+		artist: "Kana Hanazawa",
 		description: "Opening 4 from Bakemonogatari.",
 		youtube_url: "https://www.youtube.com/watch?v=bdSAWBUpbIM"
 	},
