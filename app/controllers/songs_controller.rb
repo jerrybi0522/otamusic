@@ -11,6 +11,11 @@ class SongsController < ApplicationController
     @favorite = Favorite.new
     @vote = Vote.new
     @categories = Category.all
+    @category = Category.find(params[:id])
+    # if Vote.where(category_id == @category.id && song_id == @song.id)
+    #   @vote.destroy
+    #   @vote.create
+    # end
   end
 
   def new
