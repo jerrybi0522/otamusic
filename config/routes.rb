@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  # post 'favorites/:id' => 'favorites#create', as: :favorites
   resources :votes, only: [:create, :destroy]
   resources :sessions, only: [:create, :destroy]
 

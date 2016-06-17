@@ -6,6 +6,11 @@ by <%= @song.artist %>
 	<% if current_user == @song.user || current_user.admin %>
 		<%= link_to "Edit Song", edit_song_path(@song) %>
 	<% end %>
+	<% if !@favorite %>
+		<%= button_to "Favorite", favorites_path(song_id: @song.id), method: :post %>
+	<% else %>
+		<%= button_to "Unfavorite", favorite_path(@favorite.id), method: :delete %>
+	<% end %>
 <% end %>
 
 <% if logged_in? %>

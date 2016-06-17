@@ -8,14 +8,15 @@ class SongsController < ApplicationController
     @comment = Comment.new
     @comment.save
     @comments = @song.comments
-    @favorite = Favorite.new
+    @favorite = Favorite.where(user_id: current_user.id, song_id: @song.id).first
     @vote = Vote.new
     @categories = Category.all
-    @category = Category.find(params[:id])
-    # if Vote.where(category_id == @category.id && song_id == @song.id)
-    #   @vote.destroy
-    #   @vote.create
-    # end
+
+    @cute_votes = count(@song, @categories[0])
+    @joyful_votes = count(@song, @categories[1])
+    @melancholic_votes = count(@song, @categories[2])
+    @psyched_votes = count(@song, @categories[3])
+    @serene_votes = count(@song, @categories[4])
   end
 
   def new
@@ -33,11 +34,12 @@ class SongsController < ApplicationController
 
   def edit
     @song = Song.find(params[:id])
+    @categories = Category.all
   end
 
   def update
     @song = Song.find(params[:id])
-    @song.upate(song_params)
+    @song.update(song_params)
     redirect_to song_path(@song)
   end
 
@@ -46,6 +48,16 @@ class SongsController < ApplicationController
     @song.destroy
     redirect_to root_path
   end
+
+  def count(song, category)
+    count = 0
+    song.votes.each do |v|
+      if v.category == category
+        count+=1
+      end
+    end
+    count
+  end  
 
   private
 

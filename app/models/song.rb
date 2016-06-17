@@ -5,4 +5,6 @@ class Song < ActiveRecord::Base
 	has_many :favorites
 	has_many :votes
 	has_many :categories, through: :votes
+
+	attr_accessor :favorite
 end

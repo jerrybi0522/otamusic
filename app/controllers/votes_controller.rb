@@ -11,10 +11,7 @@ class VotesController < ApplicationController
   	@vote.save
 
   	# Change to ujs
-    ##Vote.where(user_id: current_user.id && song_id: song.id)
-
   	redirect_to song_path(@song)
-
   end
 
   def destroy
@@ -23,5 +20,9 @@ class VotesController < ApplicationController
   	@vote.destroy
   	# Change to ujs
   	redirect_to song_path(@song)
+  end
+
+  def clear_all
+    Vote.where("song_id = ?", params[:id]).delete_all
   end
 end
