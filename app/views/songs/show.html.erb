@@ -1,3 +1,19 @@
+<% if logged_in? %>
+	<% if current_user.admin %>
+		<% if @cute_votes >= 5 %>
+			Cute has at least 5 votes.
+		<% elsif @joyful_votes >= 5 %>
+			Joyful has at least 5 votes.
+		<% elsif @melancholic_votes >= 5 %>
+			Melancholic has at least 5 votes.
+		<% elsif @psyched_votes >= 5 %>
+			Psyched has at least 5 votes.
+		<% elsif @serene_votes >= 5 %>
+			Serene has at least 5 votes.
+		<% end %>
+	<% end %>
+<% end %>
+
 <%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 420, 315) %>
 <%= @song.name %>
 by <%= @song.artist %>
@@ -20,6 +36,9 @@ by <%= @song.artist %>
 			<%= f.hidden_field :song_id, value: @song.id %>
 			<%= f.submit %>
 		<% end %>
+	<% end %>
+	<% if current_user.admin %>
+		<%= button_to "Clear Votes", clear_all_path(@song) %>
 	<% end %>
 
 	<%= form_for Comment.new do |f| %>

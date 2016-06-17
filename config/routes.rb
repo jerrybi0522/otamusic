@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'categories#index'
   get 'log_out' => 'sessions#destroy'
+  post 'clear_all/:id' => 'votes#clear_all', as: :clear_all
+
   resources :users
   resources :categories, only: [:index, :show]
   resources :songs

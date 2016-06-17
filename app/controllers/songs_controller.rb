@@ -8,7 +8,9 @@ class SongsController < ApplicationController
     @comment = Comment.new
     @comment.save
     @comments = @song.comments
-    @favorite = Favorite.where(user_id: current_user.id, song_id: @song.id).first
+    if logged_in?
+      @favorite = Favorite.where(user_id: current_user.id, song_id: @song.id).first
+    end
     @vote = Vote.new
     @categories = Category.all
 
