@@ -15,7 +15,7 @@
 <% end %>
 
 <%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %><br><br>
-<%= @song.name %><br>
+<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
 by <%= @song.artist %><br>
 <%= @song.description %><br>
 <% if logged_in? %>

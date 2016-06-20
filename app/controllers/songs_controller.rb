@@ -13,6 +13,7 @@ class SongsController < ApplicationController
     end
     @vote = Vote.new
     @categories = Category.all
+    @category = Category.find(@song.category_id)
 
     @cute_votes = count(@song, @categories[0])
     @joyful_votes = count(@song, @categories[1])
