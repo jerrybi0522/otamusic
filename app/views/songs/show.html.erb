@@ -14,10 +14,10 @@
 	<% end %>
 <% end %>
 
-<%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 420, 315) %>
-<%= @song.name %>
-by <%= @song.artist %>
-<%= @song.description %>
+<%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %><br><br>
+<%= @song.name %><br>
+by <%= @song.artist %><br>
+<%= @song.description %><br>
 <% if logged_in? %>
 	<% if current_user == @song.user || current_user.admin %>
 		<%= link_to "Edit Song", edit_song_path(@song) %>

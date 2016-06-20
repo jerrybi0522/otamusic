@@ -1,8 +1,8 @@
 All Songs
-
+<br><br>
 <% @categories.each do |category| %>
-	<%= category.mood %>
+	<%= category.mood %><br>
 	<% category.songs.each do |song| %>
 		<%= link_to "#{song.name} by #{song.artist}", song_path(song) %><br>
-	<% end %>
+	<% end %><br>
 <% end %>
