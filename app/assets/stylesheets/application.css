@@ -27,3 +27,7 @@ ul {
 ul li {
 	display: inline;
 }
+
+.container {
+	text-align: center;
+}
