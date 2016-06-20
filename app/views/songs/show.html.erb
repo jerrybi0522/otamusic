@@ -34,7 +34,7 @@ by <%= @song.artist %>
 		<%= form_for Vote.new do |f| %>
 			<%= f.hidden_field :category_id , value: category.id %>
 			<%= f.hidden_field :song_id, value: @song.id %>
-			<%= f.submit %>
+			<%= image_submit_tag("#{category.mood}.png") %>
 		<% end %>
 	<% end %>
 	<% if current_user.admin %>

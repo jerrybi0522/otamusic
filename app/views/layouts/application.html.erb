@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Otamusic</title>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
 	<nav>
@@ -10,17 +10,17 @@
 			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "Songs", songs_path %></li>
 			<li><%= link_to "Members", users_path %></li>
+			<% if logged_in? %>
+				<li><%= link_to "Log Out", log_out_path %></li>
+				<li><%= link_to "Profile", user_path(current_user) %></li>
+			<% else %>
+				<%= form_tag sessions_path do %>
+					<li><%= text_field_tag :username, nil, :placeholder=>"Username" %></li>
+					<li><%= password_field_tag :password, nil, :placeholder=> "Password" %></li>
+					<li><%= submit_tag "Log In" %></li>
+				<% end %>
+			<li><%= link_to "Sign Up", new_user_path %></li>
 		</ul>
-		<% if logged_in? %>
-			<li><%= link_to "Log Out", log_out_path %></li>
-			<li><%= link_to "Profile", user_path(current_user) %></li>
-		<% else %>
-			<%= form_tag sessions_path do %>
-				<li><%= text_field_tag :username, nil, :placeholder=>"Username" %></li>
-				<li><%= password_field_tag :password, nil, :placeholder=> "Password" %></li>
-				<li><%= submit_tag "Log In" %></li>
-			<% end %>
-			<li><%= link_to "Sign Up", new_user_path %></li> 
 		<% end %>
 	</nav>
 <%= yield %>

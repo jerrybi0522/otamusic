@@ -24,5 +24,6 @@ class VotesController < ApplicationController
 
   def clear_all
     Vote.where("song_id = ?", params[:id]).delete_all
+    redirect_to :back
   end
 end
