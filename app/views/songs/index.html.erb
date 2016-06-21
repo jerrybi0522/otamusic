@@ -1,8 +1,13 @@
 All Songs
 <br><br>
-<% @categories.each do |category| %>
-	<%= category.mood %><br>
-	<% category.songs.each do |song| %>
-		<%= link_to "#{song.name} by #{song.artist}", song_path(song) %><br>
-	<% end %><br>
-<% end %>
+
+<div class="wrapper">
+	<% @categories.each do |category| %>
+		<div class="song_column <%=category.mood%>">
+			<%= category.mood %><br>
+			<% category.songs.each do |song| %>
+				<%= link_to "#{song.name} by #{song.artist}", song_path(song) %><br>
+			<% end %><br>
+		</div>
+	<% end %>
+</div>

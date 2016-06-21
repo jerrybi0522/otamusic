@@ -17,14 +17,16 @@
 body {
 	font-family: Sans-Serif;
 	background-color: lavender;
+	margin: 0;
 }
 
 nav {
 	background-color: white;
 	width: 100%;
 	text-align: center;
-	padding: 10px;
-	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 0;
 }
 
 ul {
@@ -53,8 +55,48 @@ ul li {
 
 .container {
 	text-align: center;
+	padding-top: 10px;
 }
 
 .container h1 {
 	font-size: 80px;
+}
+
+.wrapper {
+	width: 100%;
+	display: flex;
+}
+
+.song_column {
+	width: 18%;
+	float: left;
+	padding-top: 10px;
+	margin-right: .42%;
+	margin-left: .42%;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-style: solid;
+	border-radius: 10px;
+	border-color: black;
+	border-width: 1px;
+}
+
+.Cute {
+	background-color: #ffcce6;
+}
+
+.Joyful {
+	background-color: #fff0b3;
+}
+
+.Melancholic {
+	background-color: #b3ecff;
+}
+
+.Psyched {
+	background-color: #ff9999;
+}
+
+.Serene {
+	background-color: #c6ffb3;
 }
