@@ -16,7 +16,7 @@
 
 body {
 	font-family: Sans-Serif;
-	background-color: lavender;
+	background-color: #cccccc;
 	margin: 0;
 }
 
@@ -70,15 +70,10 @@ ul li {
 .song_column {
 	width: 18%;
 	float: left;
-	padding-top: 10px;
-	margin-right: .42%;
-	margin-left: .42%;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-style: solid;
+	padding: 10px;
+	margin-right: .5%;
+	margin-left: .5%;
 	border-radius: 10px;
-	border-color: black;
-	border-width: 1px;
 }
 
 .Cute {
@@ -99,4 +94,14 @@ ul li {
 
 .Serene {
 	background-color: #c6ffb3;
+}
+
+.user_column {
+	width: 47.9%;
+	float: left;
+	background-color: white;
+	padding: 10px;
+	margin-right: .5%;
+	margin-left: .5%;
+	border-radius: 10px;
 }
