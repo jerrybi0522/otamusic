@@ -2,9 +2,9 @@
 	<%= f.text_field :name, :value => @song.name, :maxlength => 150 %><br><br>
 	<%= f.text_field :artist, :value => @song.artist, :maxlength => 150 %><br><br>
 	<%= f.text_field :youtube_url, :value => @song.youtube_url, :maxlength => 150 %><br><br>
-	<%= f.collection_select :category_id, @categories, :id, :mood %>
+	<%= f.collection_select :category_id, @categories, :id, :mood %><br><br>
 	<%= f.text_area :description, :value => @song.description, :cols => 50, :rows => 10 %><br><br>
-	<%= f.submit :update %>
+	<%= f.submit "Edit" %>
 <% end %>
 
-<%= button_to "Delete", song_path(@song), method: :delete %>
+<%= link_to "Delete", song_path(@song), method: :delete %>

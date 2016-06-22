@@ -15,38 +15,44 @@
 <% end %>
 
 <%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %><br><br>
-<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
-by <%= @song.artist %><br>
-<%= @song.description %><br>
-<% if logged_in? %>
-	<% if current_user == @song.user || current_user.admin %>
-		<%= link_to "Edit Song", edit_song_path(@song) %>
-	<% end %>
-	<% if !@favorite %>
-		<%= button_to "Favorite", favorites_path(song_id: @song.id), method: :post %>
-	<% else %>
-		<%= button_to "Unfavorite", favorite_path(@favorite.id), method: :delete %>
-	<% end %>
-<% end %>
-
-<% if logged_in? %>
-	<% @categories.each do |category| %>
-		<%= form_for Vote.new do |f| %>
-			<%= f.hidden_field :category_id , value: category.id %>
-			<%= f.hidden_field :song_id, value: @song.id %>
-			<%= image_submit_tag("#{category.mood}.png") %>
+<div class="song_info">
+	<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
+	by <%= @song.artist %><br>
+	<%= @song.description %><br>
+	<% if logged_in? %>
+		<% if current_user == @song.user || current_user.admin %>
+			<%= link_to "Edit Song", edit_song_path(@song) %>
+		<% end %>
+		<% if !@favorite %>
+			<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post %>
+		<% else %>
+			<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete %>
 		<% end %>
 	<% end %>
-	<% if current_user.admin %>
-		<%= button_to "Clear Votes", clear_all_path(@song) %>
-	<% end %>
+</div>
 
-	<%= form_for Comment.new do |f| %>
-		<%= f.text_area :body, :cols => 50, :rows => 10 %>
-		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.hidden_field :song_id, value: @song.id %>
-		<%= f.submit %>
+<% if logged_in? %>
+	<div id="vote_wrapper">
+		<% @categories.each do |category| %>
+			<%= form_for Vote.new do |f| %>
+				<%= f.hidden_field :category_id , value: category.id %>
+				<%= f.hidden_field :song_id, value: @song.id %>
+				<%= image_submit_tag("#{category.mood}.png") %>
+			<% end %>
+		<% end %>
+	</div>
+	<% if current_user.admin %>
+		<%= link_to "Clear Votes", clear_all_path(@song) %>
 	<% end %>
+	
+	<div class="comment_form">
+		<%= form_for Comment.new do |f| %>
+			<%= f.text_area :body, :cols => 50, :rows => 10 %><br><br>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :song_id, value: @song.id %>
+			<%= f.submit %>
+		<% end %>
+	</div>
 <% end %>
 
 <% if @song.comments %>
@@ -54,7 +60,7 @@ by <%= @song.artist %><br>
 		<%= link_to comment.user.username, user_path(comment.user) %><br>
 		<%= comment.body %><br>
 		<% if current_user == @comment.user || current_user.admin %>
-			<%= button_to "Delete", comment_path(comment), method: :delete %>
+			<%= link_to "Delete", comment_path(comment), method: :delete %>
 		<% end %>
 	<% end %>
 <% end %>
