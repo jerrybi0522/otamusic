@@ -1,5 +1,7 @@
 All Members
 <br><br>
-<% @users.each do |user| %>
-	<%= link_to user.username, user_path(user) %><br>
-<% end %>
+<div class="user_list">
+	<% @users.each do |user| %>
+		<%= link_to user.username, user_path(user), class: "user_link" %><br>
+	<% end %>
+</div>

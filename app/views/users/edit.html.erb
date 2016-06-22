@@ -7,6 +7,8 @@
 
 	<%=f.text_field :email, :value => @user.email, placeholder: "Email" %><br><br>
 
-	<%=f.submit "Edit" %>
+	<%=f.submit "Edit", class: "cool_button" %>
 <% end %>
-<%= link_to "Delete User", user_path(@user), method: :delete %>
+<div class="button_container">
+	<%= link_to "Delete User", user_path(@user), method: :delete, class: "cool_button" %>
+</div>

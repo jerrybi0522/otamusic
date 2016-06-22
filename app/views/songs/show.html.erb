@@ -20,14 +20,16 @@
 	by <%= @song.artist %><br>
 	<%= @song.description %><br>
 	<% if logged_in? %>
-		<% if current_user == @song.user || current_user.admin %>
-			<%= link_to "Edit Song", edit_song_path(@song) %>
-		<% end %>
-		<% if !@favorite %>
-			<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post %>
-		<% else %>
-			<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete %>
-		<% end %>
+		<div class="button_container">
+			<% if current_user == @song.user || current_user.admin %>
+				<%= link_to "Edit Song", edit_song_path(@song), class: "cool_button" %>
+			<% end %>
+			<% if !@favorite %>
+				<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post, class: "cool_button" %>
+			<% else %>
+				<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete, class: "cool_button" %>
+			<% end %>
+		</div>
 	<% end %>
 </div>
 
@@ -42,25 +44,31 @@
 		<% end %>
 	</div>
 	<% if current_user.admin %>
-		<%= link_to "Clear Votes", clear_all_path(@song) %>
+		<div class="button_container">
+			<%= link_to "Clear Votes", clear_all_path(@song), class: "cool_button" %>
+		</div>
 	<% end %>
-	
+
 	<div class="comment_form">
 		<%= form_for Comment.new do |f| %>
 			<%= f.text_area :body, :cols => 50, :rows => 10 %><br><br>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.hidden_field :song_id, value: @song.id %>
-			<%= f.submit %>
+			<%= f.submit "Submit", class: "cool_button" %>
 		<% end %>
 	</div>
 <% end %>
 
 <% if @song.comments %>
 	<% @comments.reverse.each do |comment| %>
-		<%= link_to comment.user.username, user_path(comment.user) %><br>
-		<%= comment.body %><br>
-		<% if current_user == @comment.user || current_user.admin %>
-			<%= link_to "Delete", comment_path(comment), method: :delete %>
-		<% end %>
+		<div class="comment_container">
+			<%= link_to comment.user.username, user_path(comment.user) %><br>
+			<%= comment.body %><br>
+			<% if current_user == @comment.user || current_user.admin %>
+				<div class="button_container">
+					<%= link_to "Delete", comment_path(comment), method: :delete, class: "cool_button" %>
+				</div>
+			<% end %>
+		</div>
 	<% end %>
 <% end %>

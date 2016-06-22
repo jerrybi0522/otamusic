@@ -139,3 +139,26 @@ ul li {
 	background-color: white;
 	border-radius: 10px;
 }
+
+.user_list {
+	background-color: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.cool_button {
+	border: 0 none;
+	background-color: purple;
+	text-decoration: none;
+	padding: 10px;
+	color: white;
+	font-size: 20px;
+}
+
+.comment_form {
+	padding: 10px;
+}
+
+.button_container {
+	padding: 10px 0;
+}
