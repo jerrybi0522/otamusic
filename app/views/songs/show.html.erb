@@ -24,11 +24,13 @@
 			<% if current_user == @song.user || current_user.admin %>
 				<%= link_to "Edit Song", edit_song_path(@song), class: "cool_button" %>
 			<% end %>
-			<% if !@favorite %>
-				<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post, class: "cool_button" %>
-			<% else %>
-				<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete, class: "cool_button" %>
-			<% end %>
+			<span class="fave_button">
+				<% if !@favorite %>
+					<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post, remote: :true, class: "cool_button" %>
+				<% else %>
+					<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete, remote: :true, class: "cool_button" %>
+				<% end %>
+			</span>
 		</div>
 	<% end %>
 </div>
@@ -39,13 +41,13 @@
 			<%= form_for Vote.new do |f| %>
 				<%= f.hidden_field :category_id , value: category.id %>
 				<%= f.hidden_field :song_id, value: @song.id %>
-				<%= image_submit_tag("#{category.mood}.png") %>
+				<%= image_submit_tag("#{category.mood}.png", class: "#{category.mood}_button") %>
 			<% end %>
 		<% end %>
 	</div>
 	<% if current_user.admin %>
 		<div class="button_container">
-			<%= link_to "Clear Votes", clear_all_path(@song), class: "cool_button" %>
+			<%= link_to "Clear Votes", clear_all_path(@song), method: :post, class: "cool_button" %>
 		</div>
 	<% end %>
 

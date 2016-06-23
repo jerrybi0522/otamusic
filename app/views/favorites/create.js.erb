@@ -1,0 +1,2 @@
+console.log("create")
+$(".fave_button").html('<%= link_to "Unfavorite", favorite_path(@favorite.id), method: :delete, remote: :true, class: "cool_button" %>')
