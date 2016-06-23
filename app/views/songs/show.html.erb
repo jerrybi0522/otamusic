@@ -52,7 +52,7 @@
 	<% end %>
 
 	<div class="comment_form">
-		<%= form_for Comment.new do |f| %>
+		<%= form_for Comment.new, remote: :true do |f| %>
 			<%= f.text_area :body, :cols => 50, :rows => 10 %><br><br>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.hidden_field :song_id, value: @song.id %>
@@ -61,16 +61,18 @@
 	</div>
 <% end %>
 
-<% if @song.comments %>
-	<% @comments.reverse.each do |comment| %>
-		<div class="comment_container">
-			<%= link_to comment.user.username, user_path(comment.user) %><br>
-			<%= comment.body %><br>
-			<% if current_user == @comment.user || current_user.admin %>
-				<div class="button_container">
-					<%= link_to "Delete", comment_path(comment), method: :delete, class: "cool_button" %>
-				</div>
-			<% end %>
-		</div>
+<div class="comments_list">
+	<% if @song.comments %>
+		<% @comments.reverse.each do |comment| %>
+			<div class="comment_container_<%= comment.id %>">
+				<%= link_to comment.user.username, user_path(comment.user) %><br>
+				<%= comment.body %><br>
+				<% if current_user == comment.user || current_user.admin %>
+					<div class="button_container">
+						<%= link_to "Delete", comment_path(comment), method: :delete, remote: :true, class: "cool_button" %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
 	<% end %>
-<% end %>
+</div>
