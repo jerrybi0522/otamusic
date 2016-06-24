@@ -11,15 +11,28 @@ class SongsController < ApplicationController
     if logged_in?
       @favorite = Favorite.where(user_id: current_user.id, song_id: @song.id).first
     end
-    @vote = Vote.new
+    # you will add a conditional to check if a vote for this song has been made by this user
+    # if so you will set @vote to that particular vote
+    # otherwise you will set @vote to Vote.new
+    if Vote.where(user_id: current_user.id, song_id: @song.id).first
+      @vote = Vote.where(user_id: current_user.id, song_id: @song.id).first
+    else
+      @vote = Vote.new
+    end
     @categories = Category.all
     @category = Category.find(@song.category_id)
 
-    @cute_votes = count(@song, @categories[0])
-    @joyful_votes = count(@song, @categories[1])
-    @melancholic_votes = count(@song, @categories[2])
-    @psyched_votes = count(@song, @categories[3])
-    @serene_votes = count(@song, @categories[4])
+    # @cute_votes = count(@song, @categories[0])
+    # @joyful_votes = count(@song, @categories[1])
+    # @melancholic_votes = count(@song, @categories[2])
+    # @psyched_votes = count(@song, @categories[3])
+    # @serene_votes = count(@song, @categories[4])
+
+    @cute_votes = @song.count(@categories[0])
+    @joyful_votes = @song.count(@categories[1])
+    @melancholic_votes = @song.count(@categories[2])
+    @psyched_votes = @song.count(@categories[3])
+    @serene_votes = @song.count(@categories[4])
   end
 
   def new
@@ -51,16 +64,6 @@ class SongsController < ApplicationController
     @song.destroy
     redirect_to root_path
   end
-
-  def count(song, category)
-    count = 0
-    song.votes.each do |v|
-      if v.category == category
-        count+=1
-      end
-    end
-    count
-  end  
 
   private
 

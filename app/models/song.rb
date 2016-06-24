@@ -7,4 +7,25 @@ class Song < ActiveRecord::Base
 	has_many :categories, through: :votes
 
 	attr_accessor :favorite
+
+	# def count(song, category)
+ #    count = 0
+ #    song.votes.each do |v|
+ #      if v.category == category
+ #        count+=1
+ #      end
+ #    end
+ #    count
+ #  end
+
+ 	def count(category)
+    count = 0
+    self.votes.each do |v|
+      if v.category == category
+        count+=1
+      end
+    end
+    count
+  end
+
 end

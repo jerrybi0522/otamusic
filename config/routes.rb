@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   # post 'favorites/:id' => 'favorites#create', as: :favorites
-  resources :votes, only: [:create, :destroy]
+  resources :votes, only: [:create, :destroy, :update]
   resources :sessions, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

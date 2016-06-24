@@ -13,6 +13,12 @@
 		<% end %>
 	<% end %>
 <% end %>
+<!-- 
+Cute: <%= @cute_votes %>
+Joyful: <%= @joyful_votes %>
+Melancholic: <%= @melancholic_votes %>
+Psyched: <%= @psyched_votes %>
+Serene: <%= @serene_votes %> -->
 
 <%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %><br><br>
 <div class="song_info">
@@ -36,12 +42,16 @@
 </div>
 
 <% if logged_in? %>
-	<div id="vote_wrapper">
+	<div class="vote_wrapper">
 		<% @categories.each do |category| %>
-			<%= form_for Vote.new do |f| %>
-				<%= f.hidden_field :category_id , value: category.id %>
+			<%= form_for @vote, remote: :true do |f| %>
+				<%= f.hidden_field :category_id, value: category.id %>
 				<%= f.hidden_field :song_id, value: @song.id %>
-				<%= image_submit_tag("#{category.mood}.png", class: "#{category.mood}_button") %>
+				<% if category.id == @vote.category_id %>
+					<%= image_submit_tag("#{category.mood}.png", class: "#{category.mood}_button selected") %>
+				<% else %>
+					<%= image_submit_tag("#{category.mood}.png", class: "#{category.mood}_button") %>
+				<% end %>
 			<% end %>
 		<% end %>
 	</div>
