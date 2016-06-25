@@ -24,8 +24,8 @@
 	<div class="container">
 		<% if !logged_in? %>
 			<%= form_tag sessions_path, :id => "login_form" do %>
-				<%= text_field_tag :username, nil, :placeholder=>"Username" %>
-				<%= password_field_tag :password, nil, :placeholder=> "Password" %>
+				<%= text_field_tag :username, nil, :placeholder=>"Username", class: "type_field" %>
+				<%= password_field_tag :password, nil, :placeholder=> "Password", class: "type_field" %><br><br>
 				<%= submit_tag "Log In", class: "cool_button" %>
 			<% end %>
 		<% end %>

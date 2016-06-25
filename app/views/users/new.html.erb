@@ -1,11 +1,14 @@
+<h2>New User</h2>
+<br><br>
+
 <%= form_for @user do |f| %>
-	<%= f.text_field :username, placeholder: "Username" %><br><br>
+	<%= f.text_field :username, placeholder: "Username", class: "type_field" %><br><br>
 
-	<%=f.password_field :password, placeholder: "Password" %><br><br>
+	<%=f.password_field :password, placeholder: "Password", class: "type_field" %><br><br>
 
-	<%=f.password_field :password_confirmation, placeholder: "Re-enter Password" %><br><br>
+	<%=f.password_field :password_confirmation, placeholder: "Re-enter Password", class: "type_field" %><br><br>
 
-	<%=f.email_field :email, placeholder: "Email" %><br><br>
+	<%=f.email_field :email, placeholder: "Email", class: "type_field" %><br><br>
 
 	<%=f.submit "Create User", class: "cool_button" %><br>
 <% end %>

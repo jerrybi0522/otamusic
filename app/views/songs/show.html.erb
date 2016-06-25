@@ -19,12 +19,16 @@ Joyful: <%= @joyful_votes %>
 Melancholic: <%= @melancholic_votes %>
 Psyched: <%= @psyched_votes %>
 Serene: <%= @serene_votes %> -->
-
-<%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %><br><br>
+<div class="youtube_video">
+	<%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %>
+</div>
+<br><br>
 <div class="song_info">
-	<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
-	by <%= @song.artist %><br>
-	<%= @song.description %><br>
+	<div class="info_text">
+		<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
+		by <%= @song.artist %><br><br>
+		<%= @song.description %><br>
+	</div>
 	<% if logged_in? %>
 		<div class="button_container">
 			<% if current_user == @song.user || current_user.admin %>
@@ -42,6 +46,7 @@ Serene: <%= @serene_votes %> -->
 </div>
 
 <% if logged_in? %>
+	<h2>What mood do you think this song actually belongs to?</h2>
 	<div class="vote_wrapper">
 		<% @categories.each do |category| %>
 			<%= form_for @vote, remote: :true do |f| %>
@@ -63,7 +68,7 @@ Serene: <%= @serene_votes %> -->
 
 	<div class="comment_form">
 		<%= form_for Comment.new, remote: :true do |f| %>
-			<%= f.text_area :body, :cols => 50, :rows => 10 %><br><br>
+			<%= f.text_area :body, :cols => 150, :rows => 10, class: "comment_field" %><br><br>
 			<%= f.hidden_field :user_id, value: current_user.id %>
 			<%= f.hidden_field :song_id, value: @song.id %>
 			<%= f.submit "Submit", class: "cool_button" %>
@@ -74,9 +79,11 @@ Serene: <%= @serene_votes %> -->
 <div class="comments_list">
 	<% if @song.comments %>
 		<% @comments.reverse.each do |comment| %>
-			<div class="comment_container_<%= comment.id %>">
-				<%= link_to comment.user.username, user_path(comment.user) %><br>
-				<%= comment.body %><br>
+			<div class="comment_container_<%= comment.id %> comment_style">
+				<div class="comment_text">
+					<%= link_to comment.user.username, user_path(comment.user), class: "comment_user" %><br><br>
+					<%= comment.body %><br>
+				</div>
 				<% if current_user == comment.user || current_user.admin %>
 					<div class="button_container">
 						<%= link_to "Delete", comment_path(comment), method: :delete, remote: :true, class: "cool_button" %>

@@ -1,14 +1,18 @@
+<h2>Edit User</h2>
+<br><br>
+
 <%= form_for @user do |f| %>
-	<%=f.text_field :username, :value => @user.username, placeholder: "Username" %><br><br>
+	<%=f.text_field :username, :value => @user.username, placeholder: "Username", class: "type_field" %><br><br>
 
-	<%=f.password_field :password, :value => @user.password, placeholder: "Password" %><br><br>
+	<%=f.password_field :password, :value => @user.password, placeholder: "Password", class: "type_field" %><br><br>
 
-	<%=f.password_field :password_confirmation, placeholder: "Re-enter Password" %><br><br>
+	<%=f.password_field :password_confirmation, placeholder: "Re-enter Password", class: "type_field" %><br><br>
 
-	<%=f.text_field :email, :value => @user.email, placeholder: "Email" %><br><br>
+	<%=f.text_field :email, :value => @user.email, placeholder: "Email", class: "type_field" %><br><br>
 
 	<%=f.submit "Edit", class: "cool_button" %>
 <% end %>
+<br>
 <div class="button_container">
 	<%= link_to "Delete User", user_path(@user), method: :delete, class: "cool_button" %>
 </div>

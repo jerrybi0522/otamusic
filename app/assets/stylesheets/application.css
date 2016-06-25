@@ -31,7 +31,7 @@ nav {
 
 ul {
 	list-style: none;
-	font-size: 20px;
+	font-size: 30px;
 }
 
 ul li {
@@ -133,16 +133,19 @@ ul li {
 
 .song_info {
 	padding: 10px;
-	margin: 10px;
+	margin: auto;
 	text-align: left;
 	background-color: white;
 	border-radius: 10px;
+	width: 70%;
 }
 
 .user_list {
 	background-color: white;
 	padding: 10px;
 	border-radius: 10px;
+	width: 50%;
+	margin: auto;
 }
 
 .cool_button {
@@ -186,4 +189,80 @@ ul li {
 	border-style: solid;
 	border-width: 5px;
 	padding: 5px;
+}
+
+.random_song {
+	padding: 10px;
+}
+
+.comment_style {
+	padding: 10px;
+	border-radius: 10px;
+	background-color: white;
+	margin: auto;
+	width: 65%;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+.comment_user:link {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+}
+
+.comment_user:visited {
+	color: black;
+}
+
+.comment_user:hover {
+	color: #808080;
+}
+
+.info_text {
+	padding-bottom: 10px;
+}
+
+.comment_text {
+	padding-bottom: 10px;
+}
+
+#login_form {
+	margin-bottom: 10px;
+}
+
+.type_field {
+	width: 300px;
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.song_field {
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.song_desc {
+	font-size: 15px;
+}
+
+.user_link:link {
+	text-decoration: none;
+	color: black;
+}
+
+.user_link:visited {
+	color: black;
+}
+
+.user_link:hover {
+	color: #808080;
+}
+
+.comment_field {
+	font-size: 15px;
+}
+
+.category_title {
+	font-size: 20px;
 }

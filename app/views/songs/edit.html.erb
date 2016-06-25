@@ -1,12 +1,15 @@
+<h2>Edit Song</h2>
+<br><br>
+
 <%= form_for @song do |f| %>
-	<%= f.text_field :name, :value => @song.name, :maxlength => 150 %><br><br>
-	<%= f.text_field :artist, :value => @song.artist, :maxlength => 150 %><br><br>
-	<%= f.text_field :youtube_url, :value => @song.youtube_url, :maxlength => 150 %><br><br>
-	<%= f.collection_select :category_id, @categories, :id, :mood %><br><br>
-	<%= f.text_area :description, :value => @song.description, :cols => 50, :rows => 10 %><br><br>
+	<%= f.text_field :name, :value => @song.name, :maxlength => 150, class: "song_field" %><br><br>
+	<%= f.text_field :artist, :value => @song.artist, :maxlength => 150, class: "song_field" %><br><br>
+	<%= f.text_field :youtube_url, :value => @song.youtube_url, :maxlength => 150, class: "song_field" %><br><br>
+	<%= f.collection_select :category_id, @categories, :id, :mood, class: "song_field" %><br><br>
+	<%= f.text_area :description, :value => @song.description, :cols => 150, :rows => 10, class: "song_desc" %><br><br>
 	<%= f.submit "Edit", class: "cool_button" %>
 <% end %>
-
+<br>
 <div class="button_container">
 	<%= link_to "Delete", song_path(@song), method: :delete, class: "cool_button" %>
 </div>

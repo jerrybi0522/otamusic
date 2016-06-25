@@ -1,10 +1,12 @@
-All Songs
-<br><br>
+<h2>All Songs</h2>
 
 <div class="wrapper">
 	<% @categories.each do |category| %>
 		<div class="song_column <%=category.mood%>">
-			<%= category.mood %><br><br>
+			<span class="category_title">
+				<%= category.mood %>
+			</span>
+			<br><br>
 			<% category.songs.each do |song| %>
 				<%= link_to "#{song.name} by #{song.artist}", song_path(song), class: "song_link" %>
 				<% @cute_votes = song.count(@categories[0]) %>
