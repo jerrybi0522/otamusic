@@ -292,3 +292,17 @@ ul li {
 .email {
 	font-size: 20px;
 }
+
+.about {
+	padding: 10px;
+	border-radius: 10px;
+	background-color: white;
+	margin: auto;
+	margin-bottom: 10px;
+	width: 50%;
+	text-align: left;
+}
+
+.about h2 {
+	text-align: center;
+}
