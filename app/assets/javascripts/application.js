@@ -53,7 +53,7 @@ $(document).ready(function(){
 		});
 		$('.youtube_video').css({
 			"padding": "10px",
-			"background-color" : "#0DB7FF",
+			"background-color" : "#ED1C24",
 			"width": "67.5%",
 			"margin": "auto"
 		});

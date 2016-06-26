@@ -37,7 +37,7 @@
 		</span>
 		<br><br>
 		<% @fav_songs.reverse.each do |fav| %>
-			<%= link_to "#{fav.song.name} by #{fav.song.artist}", song_path(fav), class: "song_link" %><br>
+			<%= link_to "#{fav.song.name} by #{fav.song.artist}", song_path(fav.song_id), class: "song_link" %><br>
 		<% end %>
 	</div>
 </div>

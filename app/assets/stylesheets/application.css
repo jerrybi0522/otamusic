@@ -150,12 +150,16 @@ ul li {
 
 .cool_button {
 	border: 0 none;
-	background-color: purple;
+	background-color: #cc00cc;
 	text-decoration: none;
 	padding: 10px;
 	color: white;
 	font-size: 15px;
 	cursor: pointer;
+}
+
+.cool_button:active {
+	background-color: #ff66ff;
 }
 
 .comment_form {
