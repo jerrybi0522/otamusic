@@ -6,6 +6,6 @@
 	<%= f.text_field :artist, placeholder: "Song Artist", :maxlength => 150, class: "song_field" %><br><br>
 	<%= f.text_field :youtube_url, placeholder: "Youtube URL", :maxlength => 150, class: "song_field" %><br><br>
 	<%= f.collection_select :category_id, @categories, :id, :mood, class: "song_field" %><br><br>
-	<%= f.text_area :description, :cols => 50, :rows => 10, class: "song_desc" %><br><br>
+	<%= f.text_area :description, :cols => 150, :rows => 10, class: "song_desc" %><br><br>
 	<%= f.submit "Add Song", class: "cool_button" %>
 <% end %>
