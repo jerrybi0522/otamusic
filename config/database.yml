@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: otamusic_production
+  username: otamusic
+  password: <%= ENV['OTAMUSIC_DATABASE_PASSWORD'] %>
