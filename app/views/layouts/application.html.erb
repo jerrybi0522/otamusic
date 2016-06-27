@@ -22,6 +22,7 @@
 		</ul>
 	</nav>
 	<div class="container">
+	<!-- Allows loging -->
 		<% if !logged_in? %>
 			<%= form_tag sessions_path, :id => "login_form" do %>
 				<%= text_field_tag :username, nil, :placeholder=>"Username", class: "type_field" %>

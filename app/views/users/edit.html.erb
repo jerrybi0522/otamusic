@@ -1,6 +1,6 @@
 <h2>Edit User</h2>
 <br><br>
-
+<!-- Allows for editing of user -->
 <%= form_for @user do |f| %>
 	<%=f.text_field :username, :value => @user.username, placeholder: "Username", class: "type_field" %><br><br>
 
@@ -14,5 +14,6 @@
 <% end %>
 <br>
 <div class="button_container">
+	<!-- Allows for deletion of user -->
 	<%= link_to "Delete User", user_path(@user), method: :delete, class: "cool_button" %>
 </div>

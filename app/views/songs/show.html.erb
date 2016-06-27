@@ -1,3 +1,4 @@
+<!-- Puts up note if votes for a category reaches 5 -->
 <% if logged_in? %>
 	<% if current_user.admin %>
 		<% if @cute_votes >= 5 %>
@@ -20,11 +21,13 @@ Melancholic: <%= @melancholic_votes %>
 Psyched: <%= @psyched_votes %>
 Serene: <%= @serene_votes %> -->
 <div class="youtube_video">
+	<!-- Embeds YouTube videos using YouTubeAddy gem -->
 	<%=raw YouTubeAddy.youtube_embed_url(@song.youtube_url, 1280, 720) %>
 </div>
 <br><br>
 <div class="song_info">
 	<div class="info_text">
+	<!-- Grabs data for js -->
 		<h2 id="song_title" data-cat=<%= @category.id %>><%= @song.name %><br></h2>
 		by <%= @song.artist %><br><br>
 		<%= @song.description %><br>
@@ -35,6 +38,7 @@ Serene: <%= @serene_votes %> -->
 				<%= link_to "Edit Song", edit_song_path(@song), class: "cool_button" %>
 			<% end %>
 			<span class="fave_button">
+			<!-- Allows user to favorite and unfavorite a song at will -->
 				<% if !@favorite %>
 					<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post, remote: :true, class: "cool_button" %>
 				<% else %>
@@ -48,6 +52,7 @@ Serene: <%= @serene_votes %> -->
 <% if logged_in? %>
 	<h2>What mood do you think this song actually belongs to?</h2>
 	<div class="vote_wrapper">
+	<!-- Allows users to click on a category and choose what they think the songs belong to, as well as allowing them to change it anytime -->
 		<% @categories.each do |category| %>
 			<%= form_for @vote, remote: :true do |f| %>
 				<%= f.hidden_field :category_id, value: category.id %>
@@ -67,6 +72,7 @@ Serene: <%= @serene_votes %> -->
 	<% end %>
 
 	<div class="comment_form">
+	<!-- Adds new comment -->
 		<%= form_for Comment.new, remote: :true do |f| %>
 			<%= f.text_area :body, :cols => 150, :rows => 10, class: "comment_field" %><br><br>
 			<%= f.hidden_field :user_id, value: current_user.id %>

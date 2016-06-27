@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+// Changes styling of show song pages depending on category
 $(document).ready(function(){
 	if ($("#song_title").data('cat') == 1){
 		$('body').css({

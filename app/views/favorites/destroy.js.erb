@@ -1,1 +1,2 @@
+// Changes "Unfavorite" button to "Favorite" button
 $(".fave_button").html('<%= link_to "Favorite", favorites_path(song_id: @song.id), method: :post, remote: :true, class: "cool_button" %>')

@@ -1,12 +1,14 @@
 class VotesController < ApplicationController
 	def create
     @song = Song.find(params[:vote][:song_id])
+    # Finds vote that has already been made
     v = Vote.where("user_id = ? AND song_id = ?", current_user.id, params[:vote][:song_id])
-
+    # Destroys a vote in order to replace it with a new vote
     if v && v!= []
       Vote.destroy(v.first.id)
     end
 
+    # Creates a new vote
   	@vote = Vote.new(user_id: current_user.id, song_id: params[:vote][:song_id], category_id: params[:vote][:category_id])
     respond_to do |format|
       if @vote.save
@@ -20,6 +22,7 @@ class VotesController < ApplicationController
   end
 
   def update
+    # Changes vote to new vote
     @vote = Vote.find(params[:id])
     respond_to do |format|
       if @vote.update(vote_params)
@@ -39,6 +42,7 @@ class VotesController < ApplicationController
   end
 
   def clear_all
+    # Allows admin to clear all votes
     Vote.where("song_id = ?", params[:id]).delete_all
     # respond_to do |format|
     #   format.js

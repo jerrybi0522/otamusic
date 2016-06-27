@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   	@melancholic = Category.find(3)
   	@psyched = Category.find(4)
   	@serene = Category.find(5)
+    
+    # Finds a song at random under each category
   	@random_cute = Category.find(1).songs.all.sample
   	@random_joyful = Category.find(2).songs.all.sample
   	@random_melancholic = Category.find(3).songs.all.sample

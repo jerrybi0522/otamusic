@@ -14,6 +14,7 @@
 		    <% @melancholic_votes = song.count(@categories[2]) %>
 		    <% @psyched_votes = song.count(@categories[3]) %>
 		    <% @serene_votes = song.count(@categories[4]) %>
+		    <!-- Puts in check marker if votes for a specific category on a song reaches 5 -->
 				<% if logged_in? %>
 					<% if current_user.admin %>
 						<% if @cute_votes >= 5 || @joyful_votes >= 5 || @melancholic_votes >= 5 || @psyched_votes >= 5 || @serene_votes >= 5 %> %>

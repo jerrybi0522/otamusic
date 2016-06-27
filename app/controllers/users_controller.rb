@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @songs = @user.songs
+    # Shows all of the user's favorites
     @fav_songs = Favorite.where(user_id: @user.id).all
   end
 

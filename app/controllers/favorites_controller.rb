@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   def create
+    # Puts song into user's favorite list
   	@favorite = Favorite.new(user_id: current_user.id, song_id: params[:song_id])
   	@song = Song.find(params[:song_id])
     respond_to do |format|

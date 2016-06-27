@@ -1,1 +1,2 @@
+// Adds a comment without needing to reload page to the top
 $(".comments_list").prepend('<div class="comment_container_<%= @comment.id %> comment_style"><div class="comment_text"><%= link_to @comment.user.username, user_path(@comment.user), class: "comment_user" %><br><br><%= @comment.body %><br></div><% if current_user == @comment.user || current_user.admin %><div class="button_container"><%= link_to "Delete", comment_path(@comment), method: :delete, remote: :true, class: "cool_button" %></div><% end %></div>')
