@@ -2,10 +2,10 @@ class VotesController < ApplicationController
 	def create
     @song = Song.find(params[:vote][:song_id])
     # Finds vote that has already been made
-    v = Vote.where("user_id = ? AND song_id = ?", current_user.id, params[:vote][:song_id])
+    category_vote = Vote.where("user_id = ? AND song_id = ?", current_user.id, params[:vote][:song_id])
     # Destroys a vote in order to replace it with a new vote
-    if v && v!= []
-      Vote.destroy(v.first.id)
+    if category_vote && category_vote!= []
+      Vote.destroy(category_vote.first.id)
     end
 
     # Creates a new vote

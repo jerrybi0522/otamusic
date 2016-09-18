@@ -14,21 +14,17 @@ class SongsController < ApplicationController
     # you will add a conditional to check if a vote for this song has been made by this user
     # if so you will set @vote to that particular vote
     # otherwise you will set @vote to Vote.new
+
     if logged_in?
-      if Vote.where(user_id: current_user.id, song_id: @song.id).first
-        @vote = Vote.where(user_id: current_user.id, song_id: @song.id).first
+      first_vote = Vote.where(user_id: current_user.id, song_id: @song.id).first
+      if first_vote
+        @vote = first_vote
       else
         @vote = Vote.new
       end
     end
     @categories = Category.all
     @category = Category.find(@song.category_id)
-
-    # @cute_votes = count(@song, @categories[0])
-    # @joyful_votes = count(@song, @categories[1])
-    # @melancholic_votes = count(@song, @categories[2])
-    # @psyched_votes = count(@song, @categories[3])
-    # @serene_votes = count(@song, @categories[4])
 
     @cute_votes = @song.count(@categories[0])
     @joyful_votes = @song.count(@categories[1])
